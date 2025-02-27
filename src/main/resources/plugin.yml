@@ -1,0 +1,20 @@
+name: Karma
+version: '0.1.1'
+main: my.consler.karma.karma.Main
+api-version: '1.21'
+authors: [ Consler ]
+description: A plugin to give players positive or negative effects for good and bad actions accordingly.
+
+commands:
+  checkKarma:
+    description: Check one's karma
+    usage: /<command> <player>
+    permission: Karma.default
+  setKarma:
+    description: Set one's karma
+    usage: /<command> <player> <number> OR /<command> <number>
+    permission: Karma.default
+
+permissions:
+  Karma.default:
+    default: true
