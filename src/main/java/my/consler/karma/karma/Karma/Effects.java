@@ -39,11 +39,6 @@ public class Effects
         }
         else if (karma < -200)
         {
-            attackDamage.setBaseValue(0);
-
-        }
-        else
-        {
             attackDamage.setBaseValue(1);
 
         }
