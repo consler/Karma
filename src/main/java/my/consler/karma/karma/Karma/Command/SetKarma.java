@@ -19,14 +19,15 @@ public class SetKarma implements CommandExecutor {
             if(NumberUtils.isCreatable( args[0]))
             {
                 Board.set(player.getUniqueId(), Integer.parseInt( args[0]));
+                player.sendMessage("Set " + player.getName() + "'s karma to " + args[0]);
 
             }
             else
             {
                 Board.set( Bukkit.getPlayerUniqueId( args[0]), Integer.parseInt( args[1]));
+                player.sendMessage("Set " + args[0] + "'s karma to " + args[1]);
 
             }
-
 
         }
 

@@ -1,4 +1,4 @@
-package my.consler.karma.karma;
+package my.consler.karma.karma.Karma;
 
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;

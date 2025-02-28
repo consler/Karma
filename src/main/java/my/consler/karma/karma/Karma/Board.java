@@ -1,6 +1,5 @@
 package my.consler.karma.karma.Karma;
 
-import my.consler.karma.karma.Effects;
 import my.consler.karma.karma.SaveSystem;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -32,10 +31,12 @@ public class Board {
         try
         {
             SaveSystem.writeto_savefile(karma_board);
+
         }
         catch (IOException e)
         {
             throw new RuntimeException(e);
+
         }
     }
 

@@ -1,5 +1,6 @@
 package my.consler.karma.karma;
 
+import my.consler.karma.karma.Action.Advancement;
 import my.consler.karma.karma.Action.Damaging;
 import my.consler.karma.karma.Action.Killing;
 import my.consler.karma.karma.Karma.Board;
@@ -21,6 +22,7 @@ public final class Main extends JavaPlugin implements Listener
         Bukkit.getPluginManager().registerEvents(this, this); //registering listeners
         Bukkit.getPluginManager().registerEvents(new Killing(), this);
         Bukkit.getPluginManager().registerEvents(new Damaging(), this);
+        Bukkit.getPluginManager().registerEvents(new Advancement(), this);
 
         Objects.requireNonNull( this.getCommand("checkKarma")).setExecutor( new CheckKarma()); // adding commands
         Objects.requireNonNull( this.getCommand("setKarma")).setExecutor( new SetKarma());

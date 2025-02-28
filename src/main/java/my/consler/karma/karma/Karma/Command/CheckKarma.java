@@ -15,15 +15,19 @@ public class CheckKarma implements CommandExecutor
     {
         if (sender instanceof Player player)
         {
-            if(args.length > 0)
+            if(args.length == 1)
             {
-                player.sendMessage( String.valueOf( Board.get( Bukkit.getPlayerUniqueId(args[0]))));
+                player.sendMessage(args[0] + "'s karma is " + Board.get( Bukkit.getPlayerUniqueId(args[0])));
+
+            }
+            else if (args.length == 0)
+            {
+                player.sendMessage("Your karma is " + Board.get( player.getUniqueId()));
 
             }
             else
             {
-                player.sendMessage( String.valueOf( Board.get( player.getUniqueId())));
-
+                player.sendMessage("Too many arguments!");
             }
 
         }
