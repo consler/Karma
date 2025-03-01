@@ -1,5 +1,5 @@
 # Karma Plugin
-is a Minecraft Paper plugin to reward good players and punish the bad players.
+is a Minecraft Paper plugin to reward the good players and punish the bad players.
 
 ## Commands
 ### /setkarma
@@ -43,10 +43,10 @@ Example usage:
 ```
 
 ## Actions
-The number could and are going to change.
+The numbers could and will change.
 
-For getting an advancement, you earn 50 karma. If it's a challenge, you earn 500 karma.
+* For getting an advancement, you earn 50 karma. If it's a challenge, you earn 500 karma.
 
-For killing a monster, you earn 10 karma. For killing a non-monster, you lose 15 karma.
+* For killing a monster, you earn 10 karma. For killing a non-monster, you lose 15 karma.
 
-For damaging a monster, you earn 2 karma. For damaging a non-monster, you lose 3 karma.
+* For damaging a monster, you earn 2 karma. For damaging a non-monster, you lose 3 karma.
