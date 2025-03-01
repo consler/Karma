@@ -52,4 +52,4 @@ The numbers could and will change.
 * For damaging a monster, you earn 2 karma. For damaging a non-monster, you lose 3 karma.
 
 ## Effects
-The less karma you have, the less damage you do. The more karna you have, the mode damage you do.
+The less karma you have, the less attack damage, attack speed and mining speed you have. The more karna you have, the more attack damage, attack speed and mining speed you have.
