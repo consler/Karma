@@ -7,7 +7,6 @@ import org.bukkit.entity.Player;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.UUID;
 
 public class Board {
@@ -80,7 +79,6 @@ public class Board {
             Effects.update(player, karma);
 
         }
-
 
     }
 

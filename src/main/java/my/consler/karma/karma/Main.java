@@ -39,6 +39,7 @@ public final class Main extends JavaPlugin implements Listener
     public void onDisable()
     {
         Board.save();
+
     }
 
     @EventHandler
@@ -53,4 +54,5 @@ public final class Main extends JavaPlugin implements Listener
         Board.onUpdate(playerUUID);
 
     }
+
 }

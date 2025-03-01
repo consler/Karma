@@ -26,17 +26,28 @@ public class Thank implements CommandExecutor
                 {
                     UUID senderUUID = ((Player) sender).getUniqueId();
                     OfflinePlayer receiver = Bukkit.getOfflinePlayerIfCached(args[0]);
+                    int karma_sent = Integer.parseInt(args[1]);
                     if (receiver != null)
                     {
                         UUID receiverUUID = receiver.getUniqueId();
                         if (Board.karma_board.containsKey(receiverUUID))
                         {
-                            Board.subtract(senderUUID, Integer.parseInt(args[1]));
-                            Board.add(receiverUUID, Integer.parseInt(args[1]));
-                            sender.sendMessage("You thanked " + args[0] + " with " + args[1] + " karma!");
-                            if(receiver.isOnline())
+                            if(karma_sent > 0 && Board.get(senderUUID) - karma_sent >= 0)
                             {
-                                Objects.requireNonNull( receiver.getPlayer()).sendMessage("You received " + args[1] + " karma from " + sender.getName());
+                                Board.subtract(senderUUID, karma_sent);
+                                Board.add(receiverUUID, karma_sent);
+                                sender.sendMessage("You thanked " + args[0] + " with " + args[1] + " karma!");
+                                if(receiver.isOnline())
+                                {
+                                    Objects.requireNonNull( receiver.getPlayer()).sendMessage("You received " + args[1] + " karma from " + sender.getName());
+
+                                }
+
+                            }
+                            else
+                            {
+                                sender.sendMessage("§CCan't send the specified amount of karma");
+
                             }
 
                         }
@@ -63,7 +74,7 @@ public class Thank implements CommandExecutor
             }
             else
             {
-                sender.sendMessage("Incorrect usage! Correct usage: /thank <player> <amountOfPoints>");
+                return false;
 
             }
 
