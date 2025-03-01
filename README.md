@@ -50,3 +50,6 @@ The numbers could and will change.
 * For killing a monster, you earn 10 karma. For killing a non-monster, you lose 15 karma.
 
 * For damaging a monster, you earn 2 karma. For damaging a non-monster, you lose 3 karma.
+
+## Effects
+The less karma you have, the less damage you do. The more karna you have, the mode damage you do.
