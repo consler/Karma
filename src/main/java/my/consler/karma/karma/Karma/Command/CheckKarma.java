@@ -2,11 +2,15 @@ package my.consler.karma.karma.Karma.Command;
 
 import my.consler.karma.karma.Karma.Board;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 public class CheckKarma implements CommandExecutor
 {
@@ -17,7 +21,15 @@ public class CheckKarma implements CommandExecutor
         {
             if(args.length == 1)
             {
-                player.sendMessage(args[0] + "'s karma is " + Board.get( Bukkit.getPlayerUniqueId(args[0])));
+                OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayerIfCached(args[0]);
+                if(offlinePlayer != null)
+                {
+                    player.sendMessage(args[0] + "'s karma is " + Board.get(  Objects.requireNonNull( Bukkit.getOfflinePlayerIfCached( args[0])).getUniqueId()));
+                }
+                else
+                {
+                    player.sendMessage( "§CCouldn't find " + args[0]);
+                }
 
             }
             else if (args.length == 0)
@@ -27,7 +39,8 @@ public class CheckKarma implements CommandExecutor
             }
             else
             {
-                player.sendMessage("Too many arguments!");
+                return false;
+
             }
 
         }

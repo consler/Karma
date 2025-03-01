@@ -3,11 +3,15 @@ package my.consler.karma.karma.Karma.Command;
 import my.consler.karma.karma.Karma.Board;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+import java.util.UUID;
 
 public class SetKarma implements CommandExecutor {
     @Override
@@ -15,18 +19,53 @@ public class SetKarma implements CommandExecutor {
     {
         if (sender instanceof Player player)
         {
-
-            if(NumberUtils.isCreatable( args[0]))
+            if (args.length == 1)
             {
-                Board.set(player.getUniqueId(), Integer.parseInt( args[0]));
-                player.sendMessage("Set " + player.getName() + "'s karma to " + args[0]);
+                if(NumberUtils.isCreatable( args[0]))
+                {
+                    Board.set(player.getUniqueId(), Integer.parseInt( args[0]));
+                    player.sendMessage("Set " + player.getName() + "'s karma to " + args[0]);
+
+                }
+
+            }
+            else if (args.length == 2)
+            {
+                OfflinePlayer offlineplayer = Bukkit.getOfflinePlayerIfCached( args[0]);
+                if(offlineplayer != null)
+                {
+                    UUID offlineplayerUUID = offlineplayer.getUniqueId();
+                    if (NumberUtils.isCreatable(args[1]))
+                    {
+                        if (Board.karma_board.containsKey( offlineplayerUUID))
+                        {
+                            Board.set(offlineplayerUUID, Integer.parseInt(args[1]));
+                            player.sendMessage("Set " + args[0] + "'s karma to " + args[1]);
+
+                        }
+                        else
+                        {
+                            player.sendMessage("§CCouldn't find " + args[0]);
+
+                        }
+
+                    }
+                    else
+                    {
+                        return false;
+
+                    }
+
+                }
+                else
+                {
+                    return false;
+                }
 
             }
             else
             {
-                Board.set( Bukkit.getPlayerUniqueId( args[0]), Integer.parseInt( args[1]));
-                player.sendMessage("Set " + args[0] + "'s karma to " + args[1]);
-
+                player.sendMessage("Incorrect usage. Correct usage: /setkarma <amountOfPoints> or /setkarma <player> <amountOfPoints>");
             }
 
         }

@@ -6,13 +6,16 @@ import my.consler.karma.karma.Action.Killing;
 import my.consler.karma.karma.Karma.Board;
 import my.consler.karma.karma.Karma.Command.CheckKarma;
 import my.consler.karma.karma.Karma.Command.SetKarma;
+import my.consler.karma.karma.Karma.Command.Thank;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public final class Main extends JavaPlugin implements Listener
 {
@@ -26,6 +29,7 @@ public final class Main extends JavaPlugin implements Listener
 
         Objects.requireNonNull( this.getCommand("checkKarma")).setExecutor( new CheckKarma()); // adding commands
         Objects.requireNonNull( this.getCommand("setKarma")).setExecutor( new SetKarma());
+        Objects.requireNonNull( this.getCommand("thank")).setExecutor( new Thank());
 
         Board.load();
 
@@ -40,11 +44,13 @@ public final class Main extends JavaPlugin implements Listener
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event)
     {
-        if( !( Board.karma_board.containsKey( event.getPlayer().getUniqueId()))) // add uuid to the list of karmas
+        UUID playerUUID = event.getPlayer().getUniqueId();
+        if( !( Board.karma_board.containsKey( playerUUID))) // add uuid to the list of karmas
         {
-            Board.karma_board.put( event.getPlayer().getUniqueId(), 0);
+            Board.karma_board.put(playerUUID, 0);
 
         }
+        Board.onUpdate(playerUUID);
 
     }
 }

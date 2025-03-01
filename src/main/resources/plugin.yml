@@ -8,13 +8,19 @@ description: A plugin to give players positive or negative effects for good and 
 commands:
   checkKarma:
     description: Check one's karma
-    usage: /<command> <player>
+    usage:  §CCorrect usage is /checkkarma <player> OR /checkkarma
+    permission: Karma.default
+  thank:
+    description: Thank someone with karma
+    usage: §CCorrect usage is /thank <player>
     permission: Karma.default
   setKarma:
     description: Set one's karma
-    usage: /<command> <player> <number> OR /<command> <number>
-    permission: Karma.default
+    usage: §CCorrect usage is /setkarma <player> <number> OR /setkarma <number>
+    permission: Karma.op
 
 permissions:
   Karma.default:
     default: true
+  Karma.op:
+    default: op

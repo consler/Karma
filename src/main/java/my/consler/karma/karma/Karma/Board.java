@@ -2,10 +2,12 @@ package my.consler.karma.karma.Karma;
 
 import my.consler.karma.karma.SaveSystem;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Board {
@@ -69,11 +71,16 @@ public class Board {
 
     public static void onUpdate(UUID uuid) // gets called every time something changes in the board
     {
-        int karma = karma_board.get(uuid);
-        Player player = Bukkit.getPlayer(uuid);
+        OfflinePlayer offlineplayer = Bukkit.getOfflinePlayer(uuid);
+        if( offlineplayer.isOnline())
+        {
+            Player player = offlineplayer.getPlayer();
+            int karma = karma_board.get(uuid);
+            assert player != null;
+            Effects.update(player, karma);
 
-        assert player != null;
-        Effects.update(player, karma);
+        }
+
 
     }
 
