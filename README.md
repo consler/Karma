@@ -45,11 +45,11 @@ Example usage:
 ## Actions
 The numbers could and will change.
 
-* For getting an advancement, you earn 50 karma. If it's a challenge, you earn 500 karma.
-
-* For killing a monster, you earn 10 karma. For killing a non-monster, you lose 15 karma.
-
-* For damaging a monster, you earn 2 karma. For damaging a non-monster, you lose 3 karma.
+* For getting an advancement, you earn 30 karma. If it's a challenge, you earn 50 karma.
+* For killing a monster, you earn 1 karma. For killing a non-monster, you lose 15 karma.
+* For damaging a non-monster, you lose 1 karma.
+* For damaging a player, you lost 50 karma. For killing a player, you lose 500 karma.
+* For priming a tnt or exploding an end crystal, you lose 100 karma.
 
 ## Effects
 The less karma you have, the less attack damage, attack speed and mining speed you have. The more karna you have, the more attack damage, attack speed and mining speed you have.

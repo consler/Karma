@@ -20,12 +20,12 @@ public class Advancement implements Listener
         {
             if (AdvancementDisplay.Frame.CHALLENGE.equals( Objects.requireNonNull( display.frame())))
             {
-                Board.add(event.getPlayer().getUniqueId(), 500);
+                Board.add(event.getPlayer().getUniqueId(), 50);
 
             }
             else
             {
-                Board.add(event.getPlayer().getUniqueId(), 50);
+                Board.add(event.getPlayer().getUniqueId(), 30);
 
             }
 

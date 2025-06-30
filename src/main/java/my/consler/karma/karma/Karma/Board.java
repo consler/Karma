@@ -6,14 +6,22 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.UUID;
 
-public class Board {
+public class Board
+{
+    public static Timestamp last_addition;
+
     public static HashMap<UUID, Integer> karma_board = new HashMap<>(); // main list with everyone's karma
 
     public static void load()
     {
+        if( last_addition == null) last_addition = Timestamp.from(Instant.now());
+
         try
         {
             karma_board = SaveSystem.read_savefile();
@@ -48,14 +56,19 @@ public class Board {
 
     }
 
-    public static void add( UUID uuid, int points) // adding points to one's aura
+    public static void add( UUID uuid, int points) // adding points to one's karma
     {
-        karma_board.put( uuid, karma_board.get(uuid) + points);
-        onUpdate(uuid);
+        if( Objects.requireNonNull(last_addition).before( Timestamp.from( Instant.now().minusSeconds(5))))
+        {
+            last_addition = Timestamp.from( Instant.now());
+            karma_board.put( uuid, karma_board.get(uuid) + points);
+            onUpdate(uuid);
+
+        }
 
     }
 
-    public static void subtract(UUID uuid, int points) // subtracting points from one's aura
+    public static void subtract(UUID uuid, int points) // subtracting points from one's karma
     {
         karma_board.put(uuid, karma_board.get(uuid) - points);
         onUpdate(uuid);

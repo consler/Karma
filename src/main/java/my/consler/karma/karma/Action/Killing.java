@@ -4,6 +4,7 @@ import my.consler.karma.karma.Karma.*;
 
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -22,8 +23,12 @@ public class Killing implements Listener
             UUID player_uuid = Objects.requireNonNull( entity.getKiller().getUniqueId());
             if (entity instanceof Monster)
             {
-                Board.add(player_uuid, 10);
+                Board.add(player_uuid, 1);
 
+            }
+            else if(entity instanceof Player)
+            {
+                Board.subtract(player_uuid, 500);
             }
             else
             {

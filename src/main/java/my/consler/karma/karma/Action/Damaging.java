@@ -7,6 +7,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
+import java.util.Objects;
+import java.util.UUID;
+
 public class Damaging implements Listener
 {
     @EventHandler
@@ -14,13 +17,16 @@ public class Damaging implements Listener
     {
         if (event.getDamager() instanceof Player player)
         {
-            if (event.getEntity() instanceof Monster)
+            UUID player_uuid = Objects.requireNonNull( player.getUniqueId());
+            if(event.getEntity() instanceof Player)
             {
-                Board.add(player.getUniqueId(), 2);
+                Board.subtract(player_uuid, 50);
+
             }
-            else
+            else if ( ! (event.getEntity() instanceof Monster))
             {
-                Board.subtract(player.getUniqueId(), 3);
+                Board.subtract(player_uuid, 1);
+
             }
 
         }
