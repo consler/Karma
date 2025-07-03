@@ -31,7 +31,7 @@ Example usage:
 /checkkarma
 ```
 ### /thank
-Takes away karma from you and give it to someone else(again, doesn't have to be online but must've played the server at least once). You can't thank someone if after the transaction you end up in debt.
+Takes away karma from you and give it to someone else (again, doesn't have to be online but must've played the server at least once). You can't thank someone if after the transaction you end up in debt.
 
 Usage:
 ```
@@ -41,15 +41,25 @@ Example usage:
 ```
 /thank Steve 69
 ```
+## karma.yml
+When you first start the server a file karma.yml is created. You can tinker with values n stuff in it. 
+
+Changes only take effect after restarting the server.
 
 ## Actions
-The numbers could and will change.
+Currently, there are 5 actions:
+* Killing a mob
+* Damaging a mob
+* Priming a TNT
+* Blowing up a crystal
+* Getting an advancement
 
-* For getting an advancement, you earn 30 karma. If it's a challenge, you earn 50 karma.
-* For killing a monster, you earn 1 karma. For killing a non-monster, you lose 15 karma.
-* For damaging a non-monster, you lose 1 karma.
-* For damaging a player, you lost 50 karma. For killing a player, you lose 500 karma.
-* For priming a tnt or exploding an end crystal, you lose 100 karma.
+## Effects 
+The less karma you have, the less attack damage, attack speed and mining speed you have. The more karna you have, the more attack damage, attack speed and mining speed you have. (not configurable yet)
 
-## Effects
-The less karma you have, the less attack damage, attack speed and mining speed you have. The more karna you have, the more attack damage, attack speed and mining speed you have.
+
+## Thing to be added:
+* Karma leaderboard
+* Milestone karma announcements
+* A log file to log everything
+* Daily login karma

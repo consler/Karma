@@ -1,6 +1,9 @@
 package my.consler.karma.karma.Karma;
 
+import my.consler.karma.karma.Config;
 import my.consler.karma.karma.SaveSystem;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -39,7 +42,7 @@ public class Board
     {
         try
         {
-            SaveSystem.writeto_savefile(karma_board);
+            SaveSystem.write_to_savefile(karma_board);
 
         }
         catch (IOException e)
@@ -49,46 +52,54 @@ public class Board
         }
     }
 
-    public static void set(UUID uuid, int points) // setting one's points
+    public static void set(Player player, int points) // setting one's points
     {
-        karma_board.put(uuid, points);
-        onUpdate(uuid);
+        karma_board.put(player.getUniqueId(), points);
+        onUpdate(player);
 
     }
 
-    public static void add( UUID uuid, int points) // adding points to one's karma
+    public static void add(Player player, int points) // adding points to one's karma
     {
-        if( Objects.requireNonNull(last_addition).before( Timestamp.from( Instant.now().minusSeconds(5))))
+        if (points > 0)
         {
-            last_addition = Timestamp.from( Instant.now());
-            karma_board.put( uuid, karma_board.get(uuid) + points);
-            onUpdate(uuid);
+            if( Objects.requireNonNull(last_addition).before( Timestamp.from( Instant.now().minusMillis(Config.earn_karma_delay))))
+            {
+                last_addition = Timestamp.from( Instant.now());
+                karma_board.put( player.getUniqueId(), karma_board.get(player.getUniqueId()) + points);
+                onUpdate(player);
+
+                player.sendActionBar(Component.text("Received " + points + " karma points", NamedTextColor.GREEN));
+
+            }
+
+        }
+        else if (points < 0)
+        {
+            if( Objects.requireNonNull(last_addition).before( Timestamp.from( Instant.now().minusMillis(Config.lose_karma_delay))))
+            {
+                karma_board.put( player.getUniqueId(), karma_board.get(player.getUniqueId()) + points);
+                onUpdate(player);
+
+                player.sendActionBar(Component.text("Taken away " + -points + " karma points", NamedTextColor.RED));
+            }
 
         }
 
     }
 
-    public static void subtract(UUID uuid, int points) // subtracting points from one's karma
+    public static int get(Player player) // retrieving one's points
     {
-        karma_board.put(uuid, karma_board.get(uuid) - points);
-        onUpdate(uuid);
+        return karma_board.get(player.getUniqueId());
 
     }
 
-    public static int get(UUID uuid) // retrieving one's points
+    public static void onUpdate(Player player) // gets called every time something changes in the board
     {
-        return karma_board.get(uuid);
-
-    }
-
-    public static void onUpdate(UUID uuid) // gets called every time something changes in the board
-    {
-        OfflinePlayer offlineplayer = Bukkit.getOfflinePlayer(uuid);
+        OfflinePlayer offlineplayer = Bukkit.getOfflinePlayer(player.getUniqueId());
         if( offlineplayer.isOnline())
         {
-            Player player = offlineplayer.getPlayer();
-            int karma = karma_board.get(uuid);
-            assert player != null;
+            int karma = karma_board.get(player.getUniqueId());
             Effects.update(player, karma);
 
         }

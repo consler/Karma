@@ -2,7 +2,6 @@ package my.consler.karma.karma.Karma.Command;
 
 import my.consler.karma.karma.Karma.Board;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -24,7 +23,7 @@ public class CheckKarma implements CommandExecutor
                 OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayerIfCached(args[0]);
                 if(offlinePlayer != null)
                 {
-                    player.sendMessage(args[0] + "'s karma is " + Board.get(  Objects.requireNonNull( Bukkit.getOfflinePlayerIfCached( args[0])).getUniqueId()));
+                    player.sendMessage(args[0] + "'s karma is " + Board.get( Objects.requireNonNull( offlinePlayer.getPlayer())));
                 }
                 else
                 {
@@ -34,7 +33,7 @@ public class CheckKarma implements CommandExecutor
             }
             else if (args.length == 0)
             {
-                player.sendMessage("Your karma is " + Board.get( player.getUniqueId()));
+                player.sendMessage("Your karma is " + Board.get( player));
 
             }
             else

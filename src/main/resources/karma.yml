@@ -1,0 +1,33 @@
+# NOTE: See https://jd.papermc.io/paper/1.21.7/org/bukkit/entity/LivingEntity.html subinterfaces for entity names.
+# NOTE: If an entity is both in a class and has a custom value, the custom value is prioritized.
+Classes:
+  Monster: [Bat, Blaze, Bogged, Breeze, CaveSpider, Creaking, Creeper, Drowned, ElderGuardian, EnderDragon, Enderman, Endermite, Evoker, Giant, Guardian, Hoglin, Husk, Illager, Illusioner, MagmaCube, Phantom, Piglin, PiglinBrute, PigZombie, Pillager, PufferFish, Ravager, Shulker, Silverfish, Skeleton, Slime, Spider, Stray, Vex, Vindicator, Warden, Witch, Wither, Zoglin, Zombie, ZombieVillager]
+  Friendly: [Allay, Armadillo, Axolotl, Camel, Cat, Dolphin, Fox, Frog, Goat, HappyGhast, Ocelot, Panda, Parrot, Sniffer, Snowman, Tadpole, Turtle, Villager, Wolf]
+  Neuter: [Chicken, Cod, Cow, Donkey, Fish, GlowSquid, Horse, IronGolem, Llama, Mule, MushroomCow, Pig, PolarBear, Rabbit, Salmon, Sheep, SkeletonHorse, Squid, Strider, TropicalFish, WanderingTrader, ZombieHorse]
+DamageValues:
+  Monster: 0
+  Friendly: -10
+  Neuter: 0
+KillValues:
+  Monster: 1
+  Friendly: -100
+  Neuter: 0
+Custom:
+  Player:
+    DamageValue: -50
+    KillValue: -1500
+  Turtle:
+    DamageValue: -150
+    KillValue: -500
+  Wolf:
+    DamageValue: -150
+    KillValue: -500
+
+TNT-Prime: -100
+End-crystal-explode: -100
+
+Advancement: 10
+Challenge: 30
+
+Earn-karma-delay: 5000
+Lose-karma-delay: 0

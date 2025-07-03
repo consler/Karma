@@ -1,5 +1,5 @@
 name: Karma
-version: '0.2.1'
+version: '0.4.0'
 main: my.consler.karma.karma.Main
 api-version: '1.21'
 authors: [ Consler ]

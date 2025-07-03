@@ -11,9 +11,9 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
-import java.util.UUID;
 
-public class SetKarma implements CommandExecutor {
+public class SetKarma implements CommandExecutor
+{
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args)
     {
@@ -23,7 +23,7 @@ public class SetKarma implements CommandExecutor {
             {
                 if(NumberUtils.isCreatable( args[0]))
                 {
-                    Board.set(player.getUniqueId(), Integer.parseInt( args[0]));
+                    Board.set(player, Integer.parseInt( args[0]));
                     player.sendMessage("Set " + player.getName() + "'s karma to " + args[0]);
 
                 }
@@ -34,12 +34,11 @@ public class SetKarma implements CommandExecutor {
                 OfflinePlayer offlineplayer = Bukkit.getOfflinePlayerIfCached( args[0]);
                 if(offlineplayer != null)
                 {
-                    UUID offlineplayerUUID = offlineplayer.getUniqueId();
                     if (NumberUtils.isCreatable(args[1]))
                     {
-                        if (Board.karma_board.containsKey( offlineplayerUUID))
+                        if (Board.karma_board.containsKey( offlineplayer.getUniqueId()))
                         {
-                            Board.set(offlineplayerUUID, Integer.parseInt(args[1]));
+                            Board.set( Objects.requireNonNull( offlineplayer.getPlayer()), Integer.parseInt(args[1]));
                             player.sendMessage("Set " + args[0] + "'s karma to " + args[1]);
 
                         }

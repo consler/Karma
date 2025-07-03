@@ -55,13 +55,13 @@ public class SaveSystem
         }
         catch (IOException e)
         {
-            System.out.println("A strange error occurred while creating the save file for Karma Plugin. Please, report the bug \n" + e.getCause());
+            System.err.println("A strange error occurred while creating the save file for Karma Plugin. Please, report the bug \n" + e.getMessage());
 
         }
 
     }
 
-    public static void writeto_savefile(HashMap<UUID, Integer> hashmap) throws IOException
+    public static void write_to_savefile(HashMap<UUID, Integer> hashmap) throws IOException
     {
         FileWriter w = new FileWriter("karma_savefile.txt");
         for(UUID u : hashmap.keySet())

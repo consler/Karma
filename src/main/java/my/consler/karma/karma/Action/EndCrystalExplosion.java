@@ -1,5 +1,6 @@
 package my.consler.karma.karma.Action;
 
+import my.consler.karma.karma.Config;
 import my.consler.karma.karma.Karma.Board;
 import org.bukkit.entity.EnderCrystal;
 import org.bukkit.entity.Player;
@@ -14,7 +15,7 @@ public class EndCrystalExplosion implements Listener
     {
         if (event.getEntity() instanceof EnderCrystal && event.getDamager() instanceof Player player)
         {
-            Board.subtract(player.getUniqueId(), 100);
+            Board.add(player, Config.end_crystal_explode);
         }
 
     }

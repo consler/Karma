@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public class Thank implements CommandExecutor
 {
@@ -24,18 +23,16 @@ public class Thank implements CommandExecutor
             {
                 if (NumberUtils.isCreatable(args[1]))
                 {
-                    UUID senderUUID = ((Player) sender).getUniqueId();
                     OfflinePlayer receiver = Bukkit.getOfflinePlayerIfCached(args[0]);
                     int karma_sent = Integer.parseInt(args[1]);
                     if (receiver != null)
                     {
-                        UUID receiverUUID = receiver.getUniqueId();
-                        if (Board.karma_board.containsKey(receiverUUID))
+                        if (Board.karma_board.containsKey(receiver.getUniqueId()))
                         {
-                            if(karma_sent > 0 && Board.get(senderUUID) - karma_sent >= 0)
+                            if(karma_sent > 0 && Board.get( (Player) sender) - karma_sent >= 0)
                             {
-                                Board.subtract(senderUUID, karma_sent);
-                                Board.add(receiverUUID, karma_sent);
+                                Board.add( (Player) sender, -karma_sent);
+                                Board.add( (Player) receiver, karma_sent);
                                 sender.sendMessage("You thanked " + args[0] + " with " + args[1] + " karma!");
                                 if(receiver.isOnline())
                                 {

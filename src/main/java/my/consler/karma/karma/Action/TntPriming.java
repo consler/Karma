@@ -1,5 +1,6 @@
 package my.consler.karma.karma.Action;
 
+import my.consler.karma.karma.Config;
 import my.consler.karma.karma.Karma.Board;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,7 +14,7 @@ public class TntPriming implements Listener
     {
         if (event.getPrimingEntity() instanceof Player player)
         {
-            Board.subtract(player.getUniqueId(), 100);
+            Board.add(player, Config.tnt_prime);
 
         }
 
