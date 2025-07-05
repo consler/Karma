@@ -2,15 +2,16 @@ package my.consler.karma.karma.Action;
 
 import my.consler.karma.karma.Config;
 import my.consler.karma.karma.Karma.Board;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.time.Instant;
+import java.util.*;
 
 public class Damaging implements Listener
 {
@@ -19,50 +20,74 @@ public class Damaging implements Listener
     public void EntityDamageByEntityEvent(EntityDamageByEntityEvent event)
     {
         Entity entity = event.getEntity();
-        if (event.getDamager() instanceof Player player)
+        if (event.getDamager() instanceof Player damager)
         {
-            Map<String, Integer> tmp_custom_values;
-            List<String> custom_mobs = new ArrayList<>();
-
-            for(Map.Entry<String, Object> custom_mob : Config.custom.entrySet())
+            if (entity instanceof Player player)
             {
-                if ( custom_mob.getKey().equals( entity.getName()))
+                if ( player.getInventory().getHelmet().getType() == Material.AIR && player.getInventory().getChestplate().getType() == Material.AIR && player.getInventory().getLeggings().getType() == Material.AIR && player.getInventory().getBoots().getType() == Material.AIR )
                 {
-                    tmp_custom_values = (Map<String, Integer>) custom_mob.getValue();
-                    Board.add(player, (tmp_custom_values.get("DamageValue")));
-                    custom_mobs.add(entity.getName());
-
+                    Board.add(damager, Config.naked_player_values.get("DamageValue"));
+                }
+                else if ( respawnTimes.get(player) >= Instant.now().getEpochSecond() - Config.spawn_killed_player_values.get("RespawnRangeS") )
+                {
+                    Board.add(damager, Config.spawn_killed_player_values.get("DamageValue"));
+                }
+                else
+                {
+                    Board.add(damager, Config.normal_player_values.get("DamageValue"));
                 }
 
             }
-
-            Map<String, Object> damage_values = Config.damage_values;
-
-            if ( !custom_mobs.contains( entity.getName())) // custom values should override class values
+            else
             {
-                if ( Config.monster.contains( entity.getName()))
+                Map<String, Integer> tmp_custom_values;
+                List<String> custom_mobs = new ArrayList<>();
+
+                for(Map.Entry<String, Object> custom_mob : Config.custom.entrySet())
                 {
-                    Board.add(player, (Integer) damage_values.get("Monster"));
+                    if ( custom_mob.getKey().equals( entity.getName()))
+                    {
+                        tmp_custom_values = (Map<String, Integer>) custom_mob.getValue();
+                        Board.add(damager, (tmp_custom_values.get("DamageValue")));
+                        custom_mobs.add(entity.getName());
+
+                    }
 
                 }
-                else if ( Config.friend.contains( entity.getName()))
-                {
-                    Board.add(player, (Integer) damage_values.get("Friendly"));
 
-                }
-                else if ( Config.neuter.contains( entity.getName()))
+                Map<String, Object> damage_values = Config.damage_values;
+
+                if ( !custom_mobs.contains( entity.getName())) // custom values should override class values
                 {
-                    Board.add(player, (Integer) damage_values.get("Neuter"));
-                }
-                else if(entity instanceof Player)
-                {
-                    Board.add(player, -500);
+                    if ( Config.monster.contains( entity.getName()))
+                    {
+                        Board.add(damager, (Integer) damage_values.get("Monster"));
+
+                    }
+                    else if ( Config.friend.contains( entity.getName()))
+                    {
+                        Board.add(damager, (Integer) damage_values.get("Friendly"));
+
+                    }
+                    else if ( Config.neuter.contains( entity.getName()))
+                    {
+                        Board.add(damager, (Integer) damage_values.get("Neuter"));
+                    }
+
                 }
 
             }
 
         }
 
+    }
+
+    public static Map<Player, Integer> respawnTimes = new HashMap<>();
+
+    @EventHandler
+    public static void PlayerRespawnEvent(PlayerRespawnEvent event)
+    {
+        respawnTimes.put(event.getPlayer(), Math.toIntExact( Instant.now().getEpochSecond()));
     }
 
 }

@@ -12,6 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.time.Instant;
 import java.util.Objects;
 
 public final class Main extends JavaPlugin implements Listener
@@ -25,6 +26,7 @@ public final class Main extends JavaPlugin implements Listener
         Bukkit.getPluginManager().registerEvents(new Advancement(), this);
         Bukkit.getPluginManager().registerEvents(new TntPriming(), this);
         Bukkit.getPluginManager().registerEvents(new EndCrystalExplosion(), this);
+        Bukkit.getPluginManager().registerEvents(new BannedWord(), this);
 
         Objects.requireNonNull( this.getCommand("checkKarma")).setExecutor( new CheckKarma()); // adding commands
         Objects.requireNonNull( this.getCommand("setKarma")).setExecutor( new SetKarma());
@@ -51,6 +53,8 @@ public final class Main extends JavaPlugin implements Listener
 
         }
         Board.onUpdate(player);
+        Killing.respawnTimes.put(player, Math.toIntExact( Instant.now().getEpochSecond()));
+        Damaging.respawnTimes.put(player, Math.toIntExact( Instant.now().getEpochSecond()));
 
     }
 

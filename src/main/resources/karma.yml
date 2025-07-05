@@ -1,5 +1,5 @@
 # NOTE: See https://jd.papermc.io/paper/1.21.7/org/bukkit/entity/LivingEntity.html subinterfaces for entity names.
-# NOTE: If an entity is both in a class and has a custom value, the custom value is prioritized.
+
 Classes:
   Monster: [Bat, Blaze, Bogged, Breeze, CaveSpider, Creaking, Creeper, Drowned, ElderGuardian, EnderDragon, Enderman, Endermite, Evoker, Giant, Guardian, Hoglin, Husk, Illager, Illusioner, MagmaCube, Phantom, Piglin, PiglinBrute, PigZombie, Pillager, PufferFish, Ravager, Shulker, Silverfish, Skeleton, Slime, Spider, Stray, Vex, Vindicator, Warden, Witch, Wither, Zoglin, Zombie, ZombieVillager]
   Friendly: [Allay, Armadillo, Axolotl, Camel, Cat, Dolphin, Fox, Frog, Goat, HappyGhast, Ocelot, Panda, Parrot, Sniffer, Snowman, Tadpole, Turtle, Villager, Wolf]
@@ -12,16 +12,34 @@ KillValues:
   Monster: 1
   Friendly: -100
   Neuter: 0
-Custom:
-  Player:
-    DamageValue: -50
+
+Player:
+  Normal:
+    DamageValue: -100
+    KillValue: -500
+  Naked:
+    DamageValue: -500
     KillValue: -1500
+  HasJustRespawned:
+    RespawnRangeS: 30
+    DamageValue: -500
+    KillValue: -1500
+
+# NOTE: You can add a custom value to any entity
+# EntityName:
+#   DamageValue: <how much karma to be added>
+#   KillValue: <how much karma to be added>
+Custom:
   Turtle:
     DamageValue: -150
     KillValue: -500
   Wolf:
     DamageValue: -150
     KillValue: -500
+
+# Add whatever words you want to ban to the list
+Banned-words: []
+Type-banned-word: -50
 
 TNT-Prime: -100
 End-crystal-explode: -100

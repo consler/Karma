@@ -47,12 +47,12 @@ When you first start the server a file karma.yml is created. You can tinker with
 Changes only take effect after restarting the server.
 
 ## Actions
-Currently, there are 5 actions:
-* Killing a mob
-* Damaging a mob
+* Killing/damaging a mob
+* Killing/damaging a player (+settings for spawn killing)
 * Priming a TNT
 * Blowing up a crystal
 * Getting an advancement
+* Banned word in chat
 
 ## Effects 
 The less karma you have, the less attack damage, attack speed and mining speed you have. The more karna you have, the more attack damage, attack speed and mining speed you have. (not configurable yet)

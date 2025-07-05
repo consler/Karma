@@ -3,10 +3,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class Config
 {
@@ -73,5 +70,18 @@ public class Config
 
     @SuppressWarnings("unchecked")
     public static Map<String, Object> custom = (Map<String, Object>) obj.get("Custom");
+
+    @SuppressWarnings("unchecked")
+    public static List<String> banned_words = (ArrayList<String>) obj.get("Banned-words");
+    public static int type_banned_word = (int) obj.get("Type-banned-word");
+
+    @SuppressWarnings("unchecked")
+    public static Map<String, Object> player = (Map<String, Object>) obj.get("Player");
+    @SuppressWarnings("unchecked")
+    public static Map<String, Integer> naked_player_values = (Map<String, Integer>) player.get("Naked");
+    @SuppressWarnings("unchecked")
+    public static Map<String, Integer> spawn_killed_player_values = (Map<String, Integer>) player.get("HasJustRespawned");
+    @SuppressWarnings("unchecked")
+    public static Map<String, Integer> normal_player_values = (Map<String, Integer>) player.get("Normal");
 
 }
