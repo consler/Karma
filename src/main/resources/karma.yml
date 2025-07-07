@@ -47,5 +47,9 @@ End-crystal-explode: -100
 Advancement: 10
 Challenge: 30
 
+Breeding: 10
+
+Collect-flower: 2
+
 Earn-karma-delay: 5000
 Lose-karma-delay: 0

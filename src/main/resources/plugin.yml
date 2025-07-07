@@ -1,7 +1,7 @@
 name: Karma
 version: '0.5.0'
 main: my.consler.karma.karma.Main
-api-version: '1.21'
+api-version: '1.21.5'
 authors: [ Consler ]
 description: A plugin to give players positive or negative effects for good and bad actions accordingly.
 

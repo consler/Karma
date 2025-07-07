@@ -84,4 +84,8 @@ public class Config
     @SuppressWarnings("unchecked")
     public static Map<String, Integer> normal_player_values = (Map<String, Integer>) player.get("Normal");
 
+    public static int breeding = (int) obj.get("Breeding");
+
+    public static int collect_flower = (int) obj.get("Collect-flower");
+
 }
