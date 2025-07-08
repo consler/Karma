@@ -1,6 +1,7 @@
 package my.consler.karma.karma.Karma.Command;
 
 import my.consler.karma.karma.Karma.Board;
+import my.consler.karma.karma.Karma.Log;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -25,6 +26,7 @@ public class SetKarma implements CommandExecutor
                 {
                     Board.set(player, Integer.parseInt( args[0]));
                     player.sendMessage("Set " + player.getName() + "'s karma to " + args[0]);
+                    Log.setkarma(player, player, Integer.parseInt( args[0]));
 
                 }
 
@@ -40,6 +42,7 @@ public class SetKarma implements CommandExecutor
                         {
                             Board.set( Objects.requireNonNull( offlineplayer.getPlayer()), Integer.parseInt(args[1]));
                             player.sendMessage("Set " + args[0] + "'s karma to " + args[1]);
+                            Log.setkarma(offlineplayer.getPlayer(), player, Integer.parseInt( args[0]));
 
                         }
                         else

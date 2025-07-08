@@ -15,7 +15,7 @@ public class SaveSystem
         HashMap<UUID, Integer> hashmap = new HashMap<>();
         try
         {
-            File savefile = new File("karma_savefile.txt");
+            File savefile = new File("plugins/Karma/karma_savefile.txt");
 
             Scanner s = new Scanner(savefile);
             while ( s.hasNextLine())
@@ -42,8 +42,8 @@ public class SaveSystem
 
     public static void create_savefile()
     {
-
-        File savefile = new File("karma_savefile.txt");
+        new File("plugins/Karma/").mkdirs();
+        File savefile = new File("plugins/Karma/karma_savefile.txt");
         try
         {
             if (savefile.createNewFile())
@@ -63,7 +63,7 @@ public class SaveSystem
 
     public static void write_to_savefile(HashMap<UUID, Integer> hashmap) throws IOException
     {
-        FileWriter w = new FileWriter("karma_savefile.txt");
+        FileWriter w = new FileWriter("plugins/Karma/karma_savefile.txt");
         for(UUID u : hashmap.keySet())
         {
             w.write(u.toString() + " " + hashmap.get(u) + "\n");

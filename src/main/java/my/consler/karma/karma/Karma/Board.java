@@ -11,9 +11,7 @@ import org.bukkit.entity.Player;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 public class Board
 {
@@ -55,7 +53,7 @@ public class Board
     public static void set(Player player, int points) // setting one's points
     {
         karma_board.put(player.getUniqueId(), points);
-        onUpdate(player);
+        onUpdate(player, points - Board.get(player));
 
     }
 
@@ -67,9 +65,10 @@ public class Board
             {
                 last_addition = Timestamp.from( Instant.now());
                 karma_board.put( player.getUniqueId(), karma_board.get(player.getUniqueId()) + points);
-                onUpdate(player);
+                onUpdate(player, points);
 
                 player.sendActionBar(Component.text("Received " + points + " karma points", NamedTextColor.GREEN));
+                Log.add(player,  points);
 
             }
 
@@ -79,9 +78,12 @@ public class Board
             if( Objects.requireNonNull(last_addition).before( Timestamp.from( Instant.now().minusMillis(Config.lose_karma_delay))))
             {
                 karma_board.put( player.getUniqueId(), karma_board.get(player.getUniqueId()) + points);
-                onUpdate(player);
+                onUpdate(player, points);
 
                 player.sendActionBar(Component.text("Taken away " + -points + " karma points", NamedTextColor.RED));
+
+                Log.add(player,  points);
+
             }
 
         }
@@ -94,13 +96,13 @@ public class Board
 
     }
 
-    public static void onUpdate(Player player) // gets called every time something changes in the board
+    public static void onUpdate(Player player, int points_added) // gets called every time something changes in the board
     {
         OfflinePlayer offlineplayer = Bukkit.getOfflinePlayer(player.getUniqueId());
         if( offlineplayer.isOnline())
         {
             int karma = karma_board.get(player.getUniqueId());
-            Effects.update(player, karma);
+            Effects.update(player, karma, points_added);
 
         }
 

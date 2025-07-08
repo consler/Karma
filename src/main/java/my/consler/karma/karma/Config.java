@@ -88,4 +88,7 @@ public class Config
 
     public static int collect_flower = (int) obj.get("Collect-flower");
 
+    @SuppressWarnings("unchecked")
+    public static Map<Integer, Map<String, Map<String, Object>>> effects =  (Map<Integer, Map<String, Map<String, Object>>> ) obj.get("Effects");
+
 }

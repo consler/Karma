@@ -26,7 +26,7 @@ public class Killing implements Listener
             Player killer = entity.getKiller();
             if ( entity instanceof Player player)
             {
-                if ( player.getInventory().getHelmet().getType() == Material.AIR && player.getInventory().getChestplate().getType() == Material.AIR && player.getInventory().getLeggings().getType() == Material.AIR && player.getInventory().getBoots().getType() == Material.AIR )
+                if ( Objects.requireNonNull(player.getInventory().getHelmet()).getType() == Material.AIR && Objects.requireNonNull(player.getInventory().getChestplate()).getType() == Material.AIR && Objects.requireNonNull(player.getInventory().getLeggings()).getType() == Material.AIR && Objects.requireNonNull(player.getInventory().getBoots()).getType() == Material.AIR )
                 {
                     Board.add(killer, Config.naked_player_values.get("KillValue"));
                 }

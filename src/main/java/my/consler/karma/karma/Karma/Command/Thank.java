@@ -1,6 +1,7 @@
 package my.consler.karma.karma.Karma.Command;
 
 import my.consler.karma.karma.Karma.Board;
+import my.consler.karma.karma.Karma.Log;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -37,6 +38,7 @@ public class Thank implements CommandExecutor
                                 if(receiver.isOnline())
                                 {
                                     Objects.requireNonNull( receiver.getPlayer()).sendMessage("You received " + args[1] + " karma from " + sender.getName());
+                                    Log.thank((Player) sender, receiver, karma_sent);
 
                                 }
 

@@ -1,5 +1,4 @@
 # NOTE: See https://jd.papermc.io/paper/1.21.7/org/bukkit/entity/LivingEntity.html subinterfaces for entity names.
-
 Classes:
   Monster: [Bat, Blaze, Bogged, Breeze, CaveSpider, Creaking, Creeper, Drowned, ElderGuardian, EnderDragon, Enderman, Endermite, Evoker, Giant, Guardian, Hoglin, Husk, Illager, Illusioner, MagmaCube, Phantom, Piglin, PiglinBrute, PigZombie, Pillager, PufferFish, Ravager, Shulker, Silverfish, Skeleton, Slime, Spider, Stray, Vex, Vindicator, Warden, Witch, Wither, Zoglin, Zombie, ZombieVillager]
   Friendly: [Allay, Armadillo, Axolotl, Camel, Cat, Dolphin, Fox, Frog, Goat, HappyGhast, Ocelot, Panda, Parrot, Sniffer, Snowman, Tadpole, Turtle, Villager, Wolf]
@@ -15,15 +14,15 @@ KillValues:
 
 Player:
   Normal:
-    DamageValue: -100
-    KillValue: -500
+    DamageValue: -20
+    KillValue: -100
   Naked:
-    DamageValue: -500
-    KillValue: -1500
+    DamageValue: -80
+    KillValue: -200
   HasJustRespawned:
     RespawnRangeS: 30
-    DamageValue: -500
-    KillValue: -1500
+    DamageValue: -100
+    KillValue: -250
 
 # NOTE: You can add a custom value to any entity
 # EntityName:
@@ -40,16 +39,201 @@ Custom:
 # Add whatever words you want to ban to the list
 Banned-words: []
 Type-banned-word: -50
-
 TNT-Prime: -100
 End-crystal-explode: -100
-
 Advancement: 10
 Challenge: 30
+Breeding: 5
+Collect-flower: 1
 
-Breeding: 10
-
-Collect-flower: 2
-
+# in milliseconds
 Earn-karma-delay: 5000
 Lose-karma-delay: 0
+
+# NOTE: Use @Player for the player, who reached the karma level
+# NOTE: karma values MUST be descending
+Effects:
+  4000:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 5
+      MAX_HEALTH: 40
+      BLOCK_BREAK_SPEED: 3
+    Commands:
+      On-rank-up: tellraw @a [{"text":"@Player has just reached 4000 karma!","color":"dark_green","bold":true}]
+      On-rank-down:
+  3000:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 4
+      MAX_HEALTH: 36
+      BLOCK_BREAK_SPEED: 2.6
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached 3000 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below 4000 karma"]
+  2500:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 3.5
+      MAX_HEALTH: 32
+      BLOCK_BREAK_SPEED: 2.2
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached 2500 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below 3000 karma"]
+  2000:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 3
+      MAX_HEALTH: 30
+      BLOCK_BREAK_SPEED: 2
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached 2000 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below 2500 karma"]
+  1600:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 2.6
+      MAX_HEALTH: 28
+      BLOCK_BREAK_SPEED: 1.6
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached 1600 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below 2000 karma"]
+  1200:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 2.2
+      MAX_HEALTH: 26
+      BLOCK_BREAK_SPEED: 1.3
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached 1200 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below 1600 karma"]
+  1000:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 2
+      MAX_HEALTH: 26
+      BLOCK_BREAK_SPEED: 1.2
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached 1000 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below 1200 karma"]
+  800:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 1.8
+      MAX_HEALTH: 24
+      BLOCK_BREAK_SPEED: 1.2
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached 800 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below 1000 karma"]
+  600:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 1.6
+      MAX_HEALTH: 24
+      BLOCK_BREAK_SPEED: 1.1
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached 600 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below 800 karma"]
+  400:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 1.4
+      MAX_HEALTH: 22
+      BLOCK_BREAK_SPEED: 1.1
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached 400 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below 600 karma"]
+  200:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 1.3
+      MAX_HEALTH: 22
+      BLOCK_BREAK_SPEED: 1
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached 200 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below 400 karma"]
+  100:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 1
+      MAX_HEALTH: 22
+      BLOCK_BREAK_SPEED: 1
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached 100 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below 200 karma"]
+  0:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 1
+      MAX_HEALTH: 20
+      BLOCK_BREAK_SPEED: 1
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached 0 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below 100 karma"]
+  -100:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 0.8
+      MAX_HEALTH: 18
+      BLOCK_BREAK_SPEED: 0.9
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached –100 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below 0 karma"]
+  -200:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 0.6
+      MAX_HEALTH: 16
+      BLOCK_BREAK_SPEED: 0.8
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached –200 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below –100 karma"]
+  -400:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 0.4
+      MAX_HEALTH: 14
+      BLOCK_BREAK_SPEED: 0.7
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached –400 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below –200 karma"]
+  -600:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 0.2
+      MAX_HEALTH: 12
+      BLOCK_BREAK_SPEED: 0.6
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached –600 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below –400 karma"]
+  -800:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 0.1
+      MAX_HEALTH: 10
+      BLOCK_BREAK_SPEED: 0.5
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached –800 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below –600 karma"]
+  -1000:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: 0
+      MAX_HEALTH: 8
+      BLOCK_BREAK_SPEED: 0.4
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached –1000 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below –800 karma"]
+  -1600:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: -0.2
+      MAX_HEALTH: 6
+      BLOCK_BREAK_SPEED: 0.3
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached –1600 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below –1000 karma"]
+  -2000:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: -0.4
+      MAX_HEALTH: 4
+      BLOCK_BREAK_SPEED: 0.2
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached –2000 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below –1600 karma"]
+  -3000:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: -0.8
+      MAX_HEALTH: 2
+      BLOCK_BREAK_SPEED: 0.1
+    Commands:
+      On-rank-up: tellraw @s ["You've just reached –3000 karma level"]
+      On-rank-down: tellraw @s ["You've just dropped below –2000 karma"]
+  -4000:
+    Attribute-modifiers:
+      ATTACK_DAMAGE: -1
+      MAX_HEALTH: 1
+      BLOCK_BREAK_SPEED: 0.05
+    Commands:
+      On-rank-up:
+      On-rank-down: tellraw @a [{"text":"@Player has just dropped below 4000 karma!","color":"red","bold":true}]

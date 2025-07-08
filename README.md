@@ -3,11 +3,11 @@
 Karma plugin
 </h1>
 
-![Paper Support](image/paper-support.svg)
-![Purpur Support](image/purpur-support.svg)
+![Paper Support](img/paper-support.svg)
+![Purpur Support](img/purpur-support.svg)
 </div>
 
-### A Minecraft Paper plugin to reward the good players and punish the bad players.
+### **Ever been annoyed at a player for killing turtles, other players, and not caring about their surroundings? Use the karma plugin to punish that type of players and reward the good players.**
 
 ## Actions
 * ### Killing/damaging a mob
@@ -18,11 +18,11 @@ Karma plugin
 * ### Collecting flowers
 * ### Breeding animals
 
-## karma.yml
-**When you first start your server, a file called karma.yml is created. Using it, you can configure the severity of each action taken by a player.**
+## Customization
+**When you first start your server, a file called karma.yml is created. Using it, you can configure everything about this plugin. If you feel like anything's missing, please create an issur**
 
-> **<span style="color:Lime">NOTE:</span>**
-> <span style="color:lightgreen">Changes only take effect after restarting the server</span>. 
+> **NOTE**:
+> Changes only take effect after restarting the server
 
 ## Commands
 ### /setkarma
@@ -70,10 +70,14 @@ The less karma you have, the less attack damage, attack speed and mining speed y
 
 
 ## Thing to be added:
+* Taming
+* Plant sapling
+* Healing an animal
+* Start a raid and end a raid
+* Defeat bosses
 * Karma leaderboard
-* Milestone karma announcements
-* A log file to log everything
 * Daily login karma
+* Smart responses for karma.yml parsing errors
 
 ## License
-![GitHub License](https://img.shields.io/github/license/consler/Karma)
+![GNU GPL v3.0](https://img.shields.io/github/license/consler/Karma)

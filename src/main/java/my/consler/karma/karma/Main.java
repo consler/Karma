@@ -5,11 +5,13 @@ import my.consler.karma.karma.Karma.Board;
 import my.consler.karma.karma.Karma.Command.CheckKarma;
 import my.consler.karma.karma.Karma.Command.SetKarma;
 import my.consler.karma.karma.Karma.Command.Thank;
+import my.consler.karma.karma.Karma.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.world.WorldSaveEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.time.Instant;
@@ -33,12 +35,20 @@ public final class Main extends JavaPlugin implements Listener
         Objects.requireNonNull( this.getCommand("setKarma")).setExecutor( new SetKarma());
         Objects.requireNonNull( this.getCommand("thank")).setExecutor( new Thank());
 
+        Log.create();
         Board.load();
 
     }
 
     @Override
     public void onDisable()
+    {
+        Board.save();
+
+    }
+
+    @EventHandler
+    public void WorldSaveEvent(WorldSaveEvent event)
     {
         Board.save();
 
@@ -53,7 +63,7 @@ public final class Main extends JavaPlugin implements Listener
             Board.set(player, 0);
 
         }
-        Board.onUpdate(player);
+        Board.onUpdate(player, 0);
         Killing.respawnTimes.put(player, Math.toIntExact( Instant.now().getEpochSecond()));
         Damaging.respawnTimes.put(player, Math.toIntExact( Instant.now().getEpochSecond()));
 
