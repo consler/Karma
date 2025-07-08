@@ -13,13 +13,22 @@ public class Log
 
     public static void create()
     {
-        new File("plugins/Karma/").mkdirs();
+        if (! (new File("plugins/Karma").exists()) && !(new File("plugins/Karma/").mkdirs()))
+        {
+            System.out.println("Error creating the karma directory");
+
+        }
         File logfile = new File("plugins/Karma/karma.log");
         try
         {
             if (!logfile.exists())
             {
-                logfile.createNewFile();
+                if (!logfile.createNewFile())
+                {
+                    System.out.println("Error creating the karma directory");
+
+                }
+
             }
             System.out.println("Log file created: " + logfile.getPath());
 
@@ -54,7 +63,7 @@ public class Log
     {
         try
         {
-            String s = player.getName() + " (" + player.getUniqueId() + ") just set +" + sender.getName() + "'s (" + sender.getUniqueId() + ") karma to "+  value + "\n";
+            String s = player.getName() + " (" + player.getUniqueId() + ") just set " + sender.getName() + "'s (" + sender.getUniqueId() + ") karma to "+  value + "\n";
             Files.write(logfile.toPath(), s.getBytes(), StandardOpenOption.APPEND);
 
         }

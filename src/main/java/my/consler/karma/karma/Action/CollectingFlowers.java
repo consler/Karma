@@ -17,7 +17,12 @@ public class CollectingFlowers implements Listener
     @EventHandler
     public void BlockPlaceEvent(BlockPlaceEvent event)
     {
-        event.getBlock().setMetadata("NOT_NATTY", new FixedMetadataValue( Main.getPlugin( Main.class), "yes"));
+        if (Tag.FLOWERS.isTagged( event.getBlock().getType()))
+        {
+            event.getBlock().setMetadata("NOT_NATTY", new FixedMetadataValue( Main.getPlugin( Main.class), "true"));
+
+        }
+
     }
 
     @EventHandler
@@ -27,6 +32,7 @@ public class CollectingFlowers implements Listener
         if ( Tag.FLOWERS.isTagged( block.getType()) && !block.getType().equals( Material.WILDFLOWERS) && block.getMetadata("NOT_NATTY").isEmpty())
         {
             Board.add(event.getPlayer(), Config.collect_flower);
+
         }
 
     }

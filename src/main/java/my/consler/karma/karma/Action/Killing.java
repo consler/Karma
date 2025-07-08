@@ -58,7 +58,11 @@ public class Killing implements Listener
                 Map<String, Object> kill_values = Config.kill_values;
                 if ( !custom_mobs.contains( entity.getName())) // custom values should override class values
                 {
-                    if ( Config.monster.contains( entity.getName()))
+                    if ( Config.boss.contains( entity.getName()))
+                    {
+                        Board.add(killer, (Integer) kill_values.get("Boss"));
+                    }
+                    else if ( Config.monster.contains( entity.getName()))
                     {
                         Board.add(killer, (Integer) kill_values.get("Monster"));
 

@@ -53,6 +53,8 @@ public class Config
     public static List<String> friend = (List<String>) classes.get("Friendly");
     @SuppressWarnings("unchecked")
     public static List<String> neuter = (List<String>) classes.get("Neuter");
+    @SuppressWarnings("unchecked")
+    public static List<String> boss = (List<String>) classes.get("Boss");
 
     @SuppressWarnings("unchecked")
     public static Map<String, Object> damage_values = (Map<String, Object>) obj.get("DamageValues");
@@ -87,6 +89,10 @@ public class Config
     public static int breeding = (int) obj.get("Breeding");
 
     public static int collect_flower = (int) obj.get("Collect-flower");
+
+    public static int taming = (int) obj.get("Tame-animal");
+
+    public static int animal_feeding = (int) obj.get("Feed-animal");
 
     @SuppressWarnings("unchecked")
     public static Map<Integer, Map<String, Map<String, Object>>> effects =  (Map<Integer, Map<String, Map<String, Object>>> ) obj.get("Effects");

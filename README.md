@@ -1,3 +1,4 @@
+<!--suppress HtmlDeprecatedAttribute -->
 <div align="center">
 <h1>
 Karma plugin
@@ -70,11 +71,7 @@ The less karma you have, the less attack damage, attack speed and mining speed y
 
 
 ## Thing to be added:
-* Taming
-* Plant sapling
-* Healing an animal
-* Start a raid and end a raid
-* Defeat bosses
+* Start a raid and end a raidw 
 * Karma leaderboard
 * Daily login karma
 * Smart responses for karma.yml parsing errors

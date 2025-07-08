@@ -30,6 +30,8 @@ public final class Main extends JavaPlugin implements Listener
         Bukkit.getPluginManager().registerEvents(new EndCrystalExplosion(), this);
         Bukkit.getPluginManager().registerEvents(new BannedWord(), this);
         Bukkit.getPluginManager().registerEvents(new CollectingFlowers(), this);
+        Bukkit.getPluginManager().registerEvents(new Animal_feeding(), this);
+        Bukkit.getPluginManager().registerEvents(new Taming(), this);
 
         Objects.requireNonNull( this.getCommand("checkKarma")).setExecutor( new CheckKarma()); // adding commands
         Objects.requireNonNull( this.getCommand("setKarma")).setExecutor( new SetKarma());
