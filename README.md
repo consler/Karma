@@ -8,7 +8,7 @@ Karma plugin
 ![Purpur Support](img/purpur-support.svg)
 </div>
 
-### **Ever been annoyed at a player for killing turtles, other players, and not caring about their surroundings? Use the karma plugin to punish that type of players and reward the good players.**
+### **Ever been annoyed at a player for killing turtles, other players, and not caring about their surroundings? Use the karma plugin to punish those types of players and reward the good ones.**
 
 ## Actions
 * ### Killing/damaging a mob
@@ -20,14 +20,14 @@ Karma plugin
 * ### Breeding animals
 
 ## Customization
-**When you first start your server, a file called karma.yml is created. Using it, you can configure everything about this plugin. If you feel like anything's missing, please create an issur**
+**When you first start your server, a file called karma.yml is created. Using it, you can configure everything about this plugin. If you feel like anything's missing, please create an issue**
 
 > **NOTE**:
 > Changes only take effect after restarting the server
 
 ## Commands
 ### /setkarma
-Set one's karma to an integer. The player doesn't have to be online but must've been on the server at least once.
+Set one's karma to an integer. The player doesn't have to be online, but must've been on the server at least once.
 
 Usage:
 ```
@@ -41,7 +41,7 @@ Example usage:
 /setkarma 120
 ```
 ### /checkkarma
-Check one's karma. The player doesn't have to be online but must've been on the server at least once.
+Check one's karma. The player doesn't have to be online, but must've been on the server at least once.
 
 Usage:
 ```
@@ -55,7 +55,7 @@ Example usage:
 /checkkarma
 ```
 ### /thank
-Takes away karma from you and give it to someone else (again, doesn't have to be online but must've played the server at least once). You can't thank someone if after the transaction you end up in debt.
+Takes away karma from you and gives it to someone else (again, doesn't have to be online, but must've played the server at least once). You can't thank someone if, after the transaction, you end up in debt.
 
 Usage:
 ```
@@ -67,11 +67,11 @@ Example usage:
 ```
 
 ## Effects 
-The less karma you have, the less attack damage, attack speed and mining speed you have. The more karna you have, the more attack damage, attack speed and mining speed you have. (not configurable yet)
+The less karma you have, the less attack damage, attack speed, and mining speed you have. The more karma you have, the more attack damage, attack speed, and mining speed you have. (very configurable - set attributes, ran commands when reached a certain milestone)
 
 
 ## Thing to be added:
-* Start a raid and end a raidw 
+* Start a raid and end a raid
 * Karma leaderboard
 * Daily login karma
 * Smart responses for karma.yml parsing errors
