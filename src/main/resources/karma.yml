@@ -50,6 +50,8 @@ Breeding: 4
 Collect-flower: 1
 Tame-animal: 10
 Feed-animal: 4
+Start-raid: -45
+Finish-raid: 45
 
 # in milliseconds
 Earn-karma-delay: 5000

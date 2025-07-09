@@ -1,5 +1,5 @@
 name: Karma
-version: '0.7.0'
+version: '0.8.0'
 main: my.consler.karma.karma.Main
 api-version: '1.21.5'
 authors: [ Consler ]
@@ -18,6 +18,10 @@ commands:
     description: Set one's karma
     usage: §CIncorrect usage! Correct usage is /setkarma <player> <number> OR /setkarma <number>
     permission: Karma.op
+  leaderboard:
+    description: "See the karma leaderboard"
+    usage: §CIncorrect usage! Correct usage is /leaderboard
+    permission: Karma.default
 
 permissions:
   Karma.default:

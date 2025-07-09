@@ -3,6 +3,7 @@ package my.consler.karma.karma;
 import my.consler.karma.karma.Action.*;
 import my.consler.karma.karma.Karma.Board;
 import my.consler.karma.karma.Karma.Command.CheckKarma;
+import my.consler.karma.karma.Karma.Command.Leaderboard;
 import my.consler.karma.karma.Karma.Command.SetKarma;
 import my.consler.karma.karma.Karma.Command.Thank;
 import my.consler.karma.karma.Karma.Log;
@@ -32,10 +33,12 @@ public final class Main extends JavaPlugin implements Listener
         Bukkit.getPluginManager().registerEvents(new CollectingFlowers(), this);
         Bukkit.getPluginManager().registerEvents(new Animal_feeding(), this);
         Bukkit.getPluginManager().registerEvents(new Taming(), this);
+        Bukkit.getPluginManager().registerEvents(new Raid(), this);
 
         Objects.requireNonNull( this.getCommand("checkKarma")).setExecutor( new CheckKarma()); // adding commands
         Objects.requireNonNull( this.getCommand("setKarma")).setExecutor( new SetKarma());
         Objects.requireNonNull( this.getCommand("thank")).setExecutor( new Thank());
+        Objects.requireNonNull( this.getCommand("leaderboard")).setExecutor( new Leaderboard());
 
         Log.create();
         Board.load();

@@ -94,6 +94,9 @@ public class Config
 
     public static int animal_feeding = (int) obj.get("Feed-animal");
 
+    public static int starting_raid = (int) obj.get("Start-raid");
+
+    public static int ending_raid = (int) obj.get("Finish-raid");
     @SuppressWarnings("unchecked")
     public static Map<Integer, Map<String, Map<String, Object>>> effects =  (Map<Integer, Map<String, Map<String, Object>>> ) obj.get("Effects");
 
