@@ -65,10 +65,16 @@ Example usage:
 ```
 /thank Steve 69
 ```
+### /leaderboard
+Shows the karma leaderboard
+
+Usage:
+```
+/leaderboard
+```
 
 ## Effects 
-The less karma you have, the less attack damage, attack speed, and mining speed you have. The more karma you have, the more attack damage, attack speed, and mining speed you have. (very configurable - set attributes, ran commands when reached a certain milestone)
-
+Configure every effect, attribute, and command ran on whatever milestone you want in karma.yml 
 
 ## Thing to be added:
 * Start a raid and end a raid
